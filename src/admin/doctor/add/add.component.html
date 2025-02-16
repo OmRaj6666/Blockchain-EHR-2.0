@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="container mb-4">
+    <form [noValidate]="false" #docForm="ngForm" (ngSubmit)="onAddDocSubmit()">
+      <div class="row form-row">
+        <div class="col-12">
+          <div class="usr-image d-flex justify-content-center flex-column align-items-center mt-3 mb-5 object-fit">
+            <img class="image rounded-circle" [src]="image_url || '../../../assets/images/doctor.png'" alt="user" width="150px">
+            <div class="img-c mb-3 mt-3 col-md-6 d-flex flex-column">
+              <label class="form-label text-center" for="formFile">Select Doctor Image</label>
+              <input class="img-chooser form-control" type="file" id="formFile" (change)="PreviewImage($event)">
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>
+              First Name
+              <sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup>
+            </label>
+            <input [(ngModel)]="model.fName" name="fName" id="fname" type="text" class="form-control" placeholder="First Name" required />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Last Name<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input [(ngModel)]="model.lName" name="lName" id="lname" type="text" class="form-control" placeholder="Last Name" required />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label>Date of Joining<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <div class="cal-icon">
+              <input [(ngModel)]="model.Doj" name="Doj" id="dob" type="date" class="form-control" placeholder="Date of Joining" required />
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Email ID<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input [(ngModel)]="model.emailID" name="emailID" id="email" type="email" class="form-control" placeholder="Email Address" required />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Mobile<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input [(ngModel)]="model.phone" name="phone" id="mob" type="text" class="form-control" placeholder="Mobile" required />
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <label>Doctor ID<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input [(ngModel)]="model.docID" name="docID" id="accid" type="text" class="form-control" placeholder="Doctor Account ID" required />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>City<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input [(ngModel)]="model.city" name="city" id="city" type="text" class="form-control" placeholder="City" required />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>State</label>
+            <input [(ngModel)]="model.state" name="state" id="state" type="text" class="form-control" placeholder="State" />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label>Specialty<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input [(ngModel)]="model.speciality" name="speciality" id="spec" type="text" class="form-control" placeholder="Specialty" required />
+          </div>
+        </div>
+      </div>
+      <button type="submit" id="btn" class="btn btn-primary">
+        Add Doctor
+      </button>
+    </form>
+  </div>
+
+  <!-- Progress Card Section -->
+  <app-progress_card [success]="success" [show]="show" [msg_text]="msg_text" [warn]="warn" (retry)="onAddDocSubmit()" (close)="onClose()">
+  </app-progress_card>
+
+  <!-- Success Message -->
+  <div *ngIf="doctorAdded" class="alert alert-success mt-4" role="alert">
+    Doctor added successfully!
+  </div>
+</div>

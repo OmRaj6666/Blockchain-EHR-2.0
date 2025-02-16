@@ -1,0 +1,128 @@
+<style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: linear-gradient(90deg, #4e54c8, #8f94fb);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .logo {
+    font-size: 1.8rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .account {
+    font-size: 1rem;
+    background: linear-gradient(90deg, #ffffff, #e3e3e3);
+    color: #4e54c8;
+    padding: 0.5rem 1rem;
+    border-radius: 30px;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 500;
+  }
+
+  .pre-loader {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    animation: fadeIn 0.7s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .card {
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .spinner-border {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-width: 0.3rem;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .retry button {
+    background: linear-gradient(90deg, #34e89e, #0f3443);
+    border: none;
+    color: white;
+    transition: background 0.4s ease-in-out, transform 0.2s ease-in-out;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    font-size: 1rem;
+  }
+
+  .retry button:hover {
+    background: linear-gradient(90deg, #0f3443, #34e89e);
+    transform: scale(1.05);
+  }
+
+  .retry button i {
+    margin-right: 8px;
+  }
+
+  .load-text {
+    font-size: 1.4rem;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+  }
+</style>
+
+<div class="header">
+  <div class="logo px-2">
+    EHR Using Blockchain
+  </div>
+  <div class="account px-2">
+    {{ account }}
+  </div>
+</div>
+
+<div class="pre-loader position-absolute" [hidden]="isConnected">
+  <div class="card">
+    <div class="spinner-border text-primary mb-3 mt-2" role="status" [hidden]="retry_visibility"></div>
+    <i class="fas fa-exclamation-triangle fs-1 text-warning" [hidden]="!retry_visibility"></i>
+    <div class="load-text my-3 text-center">
+      {{ load_text }}
+    </div>
+    <div class="retry" [hidden]="!retry_visibility">
+      <button class="btn btn-primary btn-sm" (click)="reload()">
+        <i class="fas fa-redo"></i>
+        &nbsp;Retry
+      </button>
+    </div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

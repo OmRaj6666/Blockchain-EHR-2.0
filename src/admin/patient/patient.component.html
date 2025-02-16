@@ -1,0 +1,196 @@
+<div class="container-fluid">
+  <div class="container mb-4">
+    <form [noValidate]="false" #docForm="ngForm" (ngSubmit)="onSubmit()">
+      <h3 class="h3 my-3">Welcome Patients</h3>
+      <div class="row form-row">
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label for="fname">
+              First Name
+              <sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup>
+            </label>
+            <input
+              [(ngModel)]="model.fName"
+              name="fName"
+              id="fname"
+              type="text"
+              class="form-control input-focus"
+              placeholder="First name"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label for="lname">Last Name<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input
+              [(ngModel)]="model.lName"
+              name="lName"
+              id="lname"
+              type="text"
+              class="form-control input-focus"
+              placeholder="Last name"
+            />
+          </div>
+        </div>
+
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label for="mob">Mobile<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input
+              [(ngModel)]="model.phone"
+              name="phone"
+              id="mob"
+              type="text"
+              class="form-control input-focus"
+              placeholder="Mobile"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="form-group">
+            <label for="accid">Patient Id<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input
+              [(ngModel)]="model.patID"
+              name="docID"
+              id="accid"
+              type="text"
+              class="form-control input-focus"
+              placeholder="Patient account ID"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label for="city">City<sup class="fas fa-asterisk fw-normal text-danger" style="font-size: 8px;"></sup></label>
+            <input
+              [(ngModel)]="model.city"
+              name="city"
+              id="city"
+              type="text"
+              class="form-control input-focus"
+              placeholder="City"
+              required
+            />
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <label for="state">State</label>
+            <input
+              [(ngModel)]="model.state"
+              name="state"
+              id="state"
+              type="text"
+              class="form-control input-focus"
+              placeholder="State"
+            />
+          </div>
+        </div>
+      </div>
+      <button type="submit" id="btn" class="btn btn-primary mb-3 btn-animate">
+        Add Patient
+      </button>
+    </form>
+  </div>
+
+  <!-- Welcome message with 3D effects -->
+  <div class="container">
+    <h3 style="font-family: 'Arial', sans-serif; text-transform: uppercase; font-weight: bold;">
+      AVAILABLE
+    </h3>
+    <p class="mt-3" style="font-size: 18px;">
+      Welcome Patients
+    </p>
+    <a href="mailto:vit@projectgroupbhi1.com?subject=EHR 3.0" class="contact-link">
+      BHI Group 1
+    </a>
+  </div>
+
+  <!-- 3D-style progress card -->
+  <app-progress_card
+    [success]="success"
+    [show]="show"
+    [msg_text]="msg_text"
+    [warn]="warn"
+    (retry)="onSubmit()"
+    (close)="onClose()"
+    style="transform: perspective(500px) rotateX(10deg) rotateY(5deg); transition: transform 0.5s ease-in-out;"
+  >
+  </app-progress_card>
+</div>
+
+<!-- Additional CSS for Enhanced UI -->
+<style>
+  /* Input Focus Effect */
+  .form-group {
+    position: relative;
+  }
+
+  .input-focus {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .input-focus:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    outline: none;
+  }
+
+  /* Hover Effect for Buttons */
+  .btn-animate {
+    font-size: 16px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn-animate:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Contact Link Styling with Hover Effect */
+  .contact-link {
+    font-size: 20px;
+    color: #007bff;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    transition: text-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .contact-link:hover {
+    text-shadow: 3px 3px 7px rgba(0, 0, 0, 0.3);
+    transform: translateY(-5px);
+  }
+
+  /* Button Styling */
+  .btn {
+    font-size: 16px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Text Styling with 3D Effect */
+  h3 {
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #333;
+  }
+
+  /* Adjusting Progress Card for 3D Perspective */
+  app-progress_card {
+    transition: transform 0.5s ease-in-out;
+  }
+</style>

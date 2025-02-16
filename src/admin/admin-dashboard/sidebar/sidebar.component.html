@@ -1,0 +1,137 @@
+<style>
+  #sidebarMenu {
+    background: linear-gradient(90deg, #f8f9fa, #e9ecef);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .position-sticky {
+    top: 0;
+  }
+
+  .sidebar-heading {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    color: #6c757d;
+    border-bottom: 2px solid #dee2e6;
+    padding-bottom: 0.5rem;
+  }
+
+  .list-main {
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-dash {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1rem;
+    color: #495057;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .btn-dash:hover {
+    background-color: #e2e6ea;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-dash.active {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.5);
+  }
+
+  .btn-dash i {
+    font-size: 1.25rem;
+    margin-right: 0.5rem;
+  }
+
+  .list-unstyled {
+    padding-left: 0;
+  }
+
+  .sign-out {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
+  .sign-out li {
+    display: inline-flex;
+    align-items: center;
+    color: #dc3545;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .sign-out li:hover {
+    color: #bd2130;
+  }
+
+  .sign-out i {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+</style>
+
+<nav
+  id="sidebarMenu"
+  class="col-md-2 col-lg-2 d-md-block sidebar collapse"
+  [attr.aria-expanded]="!isCollapsed"
+  [ngClass]="{ collapse: isCollapsed }"
+>
+  <div class="position-sticky pt-3">
+    <h6
+      class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1"
+    >
+      <span>Management</span>
+      <a class="link-secondary" href="#" aria-label="User Management">
+        <i class="fas fa-plus-circle"></i>
+      </a>
+    </h6>
+
+    <ul class="list-unstyled ps-0 mx-3">
+      <li class="list-main">
+        <button
+          class="btn btn-dash align-items-center rounded collapsed active"
+          [routerLink]="'admin-dashboard'"
+        >
+          <i class="fas fa-home"></i>&nbsp;&nbsp;Dashboard
+        </button>
+      </li>
+
+      <li class="list-main">
+        <button
+          class="btn btn-dash align-items-center rounded collapsed"
+          [routerLink]="'doctor'"
+        >
+          <i class="fas fa-user-md"></i>&nbsp;&nbsp;Doctor
+        </button>
+      </li>
+
+      <li class="list-main">
+        <button
+          class="btn btn-dash align-items-center rounded collapsed"
+          [routerLink]="'patient'"
+        >
+          <i class="fas fa-user-injured"></i>&nbsp;&nbsp;Patient
+        </button>
+      </li>
+
+      <li class="border-top my-3"></li>
+    </ul>
+
+    <ul class="nav flex-column sign-out" [routerLink]="''">
+      <li>
+        <i class="fas fa-sign-out-alt"></i>
+        &nbsp;Sign Out
+      </li>
+    </ul>
+  </div>
+</nav>

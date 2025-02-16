@@ -1,0 +1,209 @@
+<div class="container-fluid">
+  <!-- Refresh Button -->
+  <div class="d-flex refresh-btn justify-content-end mb-4">
+    <button class="btn btn-sm btn-primary shadow" (click)="GetDoctors()">
+      <i class="fa-solid fa-rotate-right"></i>&nbsp; Refresh
+    </button>
+  </div>
+
+  <!-- Doctor Details Section -->
+  <div class="container w-100">
+    <!-- Show loading bar while loading data -->
+    <div *ngIf="loading" class="loading-bar-container d-flex justify-content-center align-items-center mb-3">
+      <div class="loading-bar"></div>
+    </div>
+    
+
+    <div class="content" *ngIf="DoctorDetails.length >= 1 && !loading">
+      <div class="card mt-2 shadow-lg rounded-3" *ngFor="let Docdetails of DoctorDetails">
+        <div class="doctor w-100 p-3 d-flex flex-row align-items-center">
+          <!-- Doctor Image -->
+          <div class="doc-image">
+            <img
+              class="border border-1 border-secondary rounded-circle p-1"
+              [src]="Docdetails.imageHash || '../../../assets/images/doctor.png'"
+              alt="Doctor Image"
+              width="150px"
+              height="150px"
+              style="transition: transform 0.3s ease-in-out;"
+            />
+          </div>
+
+          <!-- Doctor Info -->
+          <div class="doc-info d-flex flex-column ms-3">
+            <div class="col">
+              <!-- Doctor ID -->
+              <div class="row py-2">
+                <div class="col-md-12">
+                  <b>DocID: </b><span class="docID">{{ Docdetails.docID }}</span>
+                </div>
+              </div>
+
+              <!-- Doctor Details -->
+              <div class="row-md-12 d-flex flex-row justify-content-between">
+                <div class="col-md-12 d-flex flex-column">
+                  <div>
+                    <b>Full Name: </b>
+                    <span class="fName">{{ Docdetails.fName }} {{ Docdetails.lName }}</span>
+                  </div>
+                  <div>
+                    <b>Date of Joining: </b>
+                    <span class="Doj">{{ Docdetails.Doj }}</span>
+                  </div>
+                  <div>
+                    <b>Specialty: </b>
+                    <span class="speciality">{{ Docdetails.speciality }}</span>
+                  </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-md-12 d-flex flex-column">
+                  <div>
+                    <b>Email: </b><span class="emailID">{{ Docdetails.emailID }}</span>
+                  </div>
+                  <div>
+                    <b>Phone: </b><span class="phone">{{ Docdetails.phone }}</span>
+                  </div>
+                  <div>
+                    <b>City: </b><span class="city">{{ Docdetails.city }}</span>
+                  </div>
+                  <div>
+                    <b>State: </b><span class="state">{{ Docdetails.state }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Card Section -->
+    <div *ngIf="showProgressCard" class="prgrs mt-3 d-flex flex-column align-items-center">
+      <label for="progress" class="mb-2">{{ progressMsg }}</label>
+      <progress id="progress" class="progress-bar"></progress>
+    </div>
+
+    <!-- No Doctors Section -->
+    <div class="nill d-flex flex-column justify-content-center align-items-center text-center" *ngIf="loadComplete && !loaded">
+      <p>No Doctors in the Network. Add Doctors using the tab above.</p>
+      <span class="text-primary fw-bold">Add Doctor</span>
+      <button class="btn btn-primary shadow" (click)="GetDoctors()">Retry</button>
+    </div>
+  </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+  .container {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+  }
+
+  .card {
+    border-radius: 20px;
+    border: none;
+    background: #f9f9f9;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .doctor {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+  }
+
+  .doc-image img {
+    transition: transform 0.3s ease;
+  }
+
+  .doc-image img:hover {
+    transform: scale(1.1);
+  }
+
+  .doc-info {
+    color: #333;
+  }
+
+  .doc-info b {
+    color: #007bff;
+  }
+
+  .doc-info span {
+    font-weight: 500;
+    color: #555;
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .prgrs progress {
+    width: 100%;
+    height: 20px;
+    border-radius: 10px;
+    background: #e9ecef;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .nill p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .text-primary {
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff;
+  }
+
+  /* Loading Bar Styles */
+  .loading-bar-container {
+    width: 100%;
+    height: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loading-bar {
+    width: 60%;
+    height: 6px;
+    background-color: #007bff;
+    border-radius: 5px;
+    animation: loading 2s infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      width: 10%;
+    }
+    50% {
+      width: 60%;
+    }
+    100% {
+      width: 10%;
+    }
+  }
+</style>

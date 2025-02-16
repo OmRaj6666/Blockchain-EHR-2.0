@@ -1,0 +1,180 @@
+<app-navigation></app-navigation>
+
+<div class="home container-fluid">
+  <div class="overlay">
+    <section class="her-wrap js-fullheight" data-section="home" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="content col-md-6">
+            <!-- Welcome Section -->
+            <div class="subh">
+              <span class="subheading">Welcome to EHR Hospital Services</span>
+              <h1 class="mb-4">
+                "Your Health, Our Commitment. <br />Together, We Create a Better Future!"
+              </h1>
+              <figure class="text-start">
+                <blockquote class="blockquote">
+                  <p>
+                    Transforming Healthcare with EHR: A New Era of Care & Innovation
+                  </p>
+                  <p>
+                    <a href="mailto:parth.23bhi10092@vitbhopal.ac.in?subject=EHR_2.0">
+                      <i class="fas fa-envelope fs-2 text-danger"></i>
+                    </a>
+                    <a class="mx-2" href="https://drive.google.com/file/d/1gLWKAs1lceE_ug4gP_SNop2t_Er5H91c/view?usp=sharing" target="_blank">
+                      <i class="fab fa-youtube fs-2 text-danger"></i>
+                    </a>
+                  </p>
+                </blockquote>
+                <figcaption class="blockquote-footer">BHIGRP1</figcaption>
+              </figure>
+              <p class="mb-4"></p>
+              <p>
+                <a href="#appointment" class="btn-appointment d-flex align-items-center justify-content-center py-3 px-4 rounded-pill">
+                  <img src="assets/images/appointment-icon.png" alt="Appointment Icon" class="appointment-icon" />
+                  Make an Appointment
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Appointment Section -->
+<section id="appointment" class="appointment-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="appointment-form shadow-lg rounded p-4">
+          <h3 class="text-center mb-4">Book an Appointment</h3>
+          <form (ngSubmit)="onSubmitAppointment()">
+            <!-- Full Name Field -->
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" class="form-control" id="name" placeholder="Enter your full name" required>
+            </div>
+
+            <!-- Email Address Field -->
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <!-- Phone Number Field -->
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <!-- Preferred Appointment Date Field -->
+            <div class="form-group">
+              <label for="date">Preferred Appointment Date</label>
+              <input type="date" class="form-control" id="date" required>
+            </div>
+
+            <!-- Message Field -->
+            <div class="form-group">
+              <label for="message">Additional Message</label>
+              <textarea class="form-control" id="message" rows="4" placeholder="Any special requests or notes?" ></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary w-100 py-3">Submit Appointment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Styles -->
+<style>
+  /* General Text Styling */
+  body {
+    color: black;
+  }
+
+  /* Welcome Section Styling */
+  .subh .subheading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: black;
+    line-height: 1.2;
+    margin-bottom: 30px;
+  }
+
+  .btn-appointment {
+    background: linear-gradient(45deg, #ff7e5f, #feb47b);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+  }
+
+  .btn-appointment:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+
+  .appointment-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+  }
+
+  /* Appointment Section Styling */
+  .appointment-form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .appointment-form h3 {
+    color: black;
+  }
+
+  .form-group label {
+    font-weight: bold;
+    color: black;
+  }
+
+  .form-control {
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s;
+  }
+
+  .form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  }
+
+  /* Submit Button Styling */
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+</style>
