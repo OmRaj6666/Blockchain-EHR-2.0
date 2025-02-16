@@ -52,6 +52,6 @@ npm install -g truffle
 npm start
 ```
 
-Known Issue: ()
+Known Issue: (https://github.com/OmRaj6666/Blockchain-EHR-2.0.git)
 
 
